@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Store {
@@ -19,6 +20,7 @@ public class Store {
 	@Column(name = "image_url")
 	private String imageUrl;
 	
+	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
 
@@ -57,6 +59,7 @@ public class Store {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
 
 	@Override
 	public String toString() {

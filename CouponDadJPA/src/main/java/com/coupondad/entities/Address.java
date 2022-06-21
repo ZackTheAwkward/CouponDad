@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Address {
@@ -21,6 +24,10 @@ public class Address {
 	
 	@Column(name = "zip_code")
 	private String zipcode;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="address")
+	private Store store;
 
 	public Address() {
 		super();
@@ -64,6 +71,15 @@ public class Address {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+	
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	@Override
